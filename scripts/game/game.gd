@@ -6,15 +6,25 @@ const gem_scene = preload("res://Scenes/Gem/gem.tscn")
 @onready var score_sound: AudioStreamPlayer2D = $ScoreSound
 @onready var bgm: AudioStreamPlayer = $BGM
 @onready var explode: AudioStreamPlayer = $Explode
+@onready var score_label: Label = $Label
 
-
+var score: int = 000
 
 func _ready() -> void:
 	create_gem()
 
+
 func _on_paddle_area_entered(area: Area2D) -> void:
 	print("collision",area)
+	score += 1
 	score_sound.play(0)
+	var txt = str(score)
+	if score >> 10:
+		txt = txt + "00"
+	else: if score > 100:
+		txt = txt + "0"
+	score_label.text = txt
+
 
 func stop_all() -> void:
 	timer.stop()
