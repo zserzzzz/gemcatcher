@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dd5w3bpw7u3ig"]
+[gd_scene load_steps=4 format=3 uid="uid://dd5w3bpw7u3ig"]
 
 [ext_resource type="Texture2D" uid="uid://c0ib1bugbcj8i" path="res://assets/GameBg.png" id="1_gwu2e"]
 [ext_resource type="PackedScene" uid="uid://ctuqsssb1dm0m" path="res://Scenes/Paddle/paddle.tscn" id="2_xbxml"]
+[ext_resource type="PackedScene" uid="uid://dovi2nasrvofk" path="res://Scenes/Gem/gem.tscn" id="3_xbxml"]
 
 [node name="GAME" type="Node2D"]
 
@@ -12,3 +13,6 @@ centered = false
 
 [node name="Paddle" parent="." instance=ExtResource("2_xbxml")]
 position = Vector2(560, 586)
+
+[node name="Gem" parent="." instance=ExtResource("3_xbxml")]
+position = Vector2(559, 131)
