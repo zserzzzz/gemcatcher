@@ -1,12 +1,18 @@
 extends Area2D
 
+class_name Gem
+
+
+
 @export var speed = 100
+
 
 signal game_over
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 func kms() -> void:
 	set_process(false)

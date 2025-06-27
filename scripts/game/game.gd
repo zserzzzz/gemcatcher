@@ -13,11 +13,13 @@ func _on_paddle_area_entered(area: Area2D) -> void:
 
 func stop_all() -> void:
 	timer.stop()
-	timer.autostart = false
+	for child in get_children():
+		if child is Gem:
+			pass
 
 
 func create_gem() -> void:
-	var new_gem = gem_scene.instantiate()
+	var new_gem: Gem = gem_scene.instantiate()
 	var x = randf_range(0.0,get_viewport_rect().end.x)
 	new_gem.position = Vector2(x,-50.0)
 	add_child(new_gem)
@@ -25,6 +27,7 @@ func create_gem() -> void:
 
 func _on_gem_game_over() -> void:
 	print("Game OVER")
+	stop_all()
 
 
 func _on_timer_timeout() -> void:
