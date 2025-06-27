@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dovi2nasrvofk"]
 
 [ext_resource type="Texture2D" uid="uid://bsi553gjnw1wu" path="res://assets/element_red_diamond.png" id="1_cax3k"]
-[ext_resource type="Script" uid="uid://cyy1ajw0p26ai" path="res://Scenes/Gem/gem.gd" id="1_tv10m"]
+[ext_resource type="Script" uid="uid://cyy1ajw0p26ai" path="res://scripts/gem/gem.gd" id="1_tv10m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tv10m"]
 
@@ -16,3 +16,5 @@ texture = ExtResource("1_cax3k")
 rotation = 0.785398
 scale = Vector2(1.8, 1.8)
 shape = SubResource("RectangleShape2D_tv10m")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

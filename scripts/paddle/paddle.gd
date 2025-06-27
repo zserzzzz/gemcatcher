@@ -8,4 +8,4 @@ func _process(delta: float) -> void:
 	position.x += speed * movement
 	
 	position.x = clamp(position.x,0 + 50,get_viewport_rect().end.x - 50)
-	print(position.x)
+	#print(position.x)

@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd5w3bpw7u3ig"]
+[gd_scene load_steps=6 format=3 uid="uid://dd5w3bpw7u3ig"]
 
 [ext_resource type="Texture2D" uid="uid://c0ib1bugbcj8i" path="res://assets/GameBg.png" id="1_gwu2e"]
+[ext_resource type="Script" uid="uid://c0clnl4uua3nv" path="res://scripts/game/game.gd" id="1_ln2h6"]
 [ext_resource type="PackedScene" uid="uid://ctuqsssb1dm0m" path="res://Scenes/Paddle/paddle.tscn" id="2_xbxml"]
 [ext_resource type="PackedScene" uid="uid://dovi2nasrvofk" path="res://Scenes/Gem/gem.tscn" id="3_xbxml"]
+[ext_resource type="AudioStream" uid="uid://i32gcttfq8ad" path="res://assets/bgm_action_5.mp3" id="5_y3kpf"]
 
 [node name="GAME" type="Node2D"]
+script = ExtResource("1_ln2h6")
 
 [node name="GameBg" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
@@ -16,3 +19,12 @@ position = Vector2(560, 586)
 
 [node name="Gem" parent="." instance=ExtResource("3_xbxml")]
 position = Vector2(559, 131)
+
+[node name="BgmAction5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_y3kpf")
+volume_db = -19.79
+autoplay = true
+parameters/looping = true
+
+[connection signal="area_entered" from="Paddle" to="." method="_on_paddle_area_entered"]
+[connection signal="game_over" from="Gem" to="." method="_on_gem_game_over"]
