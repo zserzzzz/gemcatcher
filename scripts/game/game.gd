@@ -2,6 +2,10 @@ extends Node2D
 
 const gem_scene = preload("res://Scenes/Gem/gem.tscn")
 @onready var timer: Timer = $Timer
+@onready var paddle: Area2D = $Paddle
+@onready var score_sound: AudioStreamPlayer2D = $ScoreSound
+@onready var bgm: AudioStreamPlayer = $BGM
+@onready var explode: AudioStreamPlayer = $Explode
 
 
 
@@ -10,12 +14,17 @@ func _ready() -> void:
 
 func _on_paddle_area_entered(area: Area2D) -> void:
 	print("collision",area)
+	score_sound.play(0)
 
 func stop_all() -> void:
 	timer.stop()
 	for child in get_children():
 		if child is Gem:
-			pass
+			child.set_process(false)
+	paddle.set_process(false)
+	score_sound.stop()
+	bgm.stop()
+	explode.play()
 
 
 func create_gem() -> void:
@@ -26,7 +35,6 @@ func create_gem() -> void:
 	new_gem.game_over.connect(_on_gem_game_over)
 
 func _on_gem_game_over() -> void:
-	print("Game OVER")
 	stop_all()
 
 
