@@ -15,14 +15,13 @@ func _ready() -> void:
 
 
 func _on_paddle_area_entered(area: Area2D) -> void:
-	print("collision",area)
 	score += 1
-	score_sound.play(0)
+	score_sound.play()
 	var txt = str(score)
-	if score >> 10:
-		txt = txt + "00"
-	else: if score > 100:
-		txt = txt + "0"
+	if score < 10:
+		txt = "00" + txt
+	else: if score < 100:
+		txt = "0" + txt
 	score_label.text = txt
 
 
@@ -43,11 +42,11 @@ func create_gem() -> void:
 	new_gem.position = Vector2(x,-50.0)
 	add_child(new_gem)
 	new_gem.game_over.connect(_on_gem_game_over)
+	print("spawned gem")
 
 func _on_gem_game_over() -> void:
 	stop_all()
 
 
 func _on_timer_timeout() -> void:
-	print("timout")
 	create_gem()
