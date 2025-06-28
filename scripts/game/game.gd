@@ -71,3 +71,7 @@ func _on_gem_game_over() -> void:
 
 func _on_timer_timeout() -> void:
 	create_gem()
+
+
+func _on_lefft_released() -> void:
+	pass # Replace with function body.

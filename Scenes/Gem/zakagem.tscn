@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://duleseva2pptd"]
+
+[ext_resource type="Script" uid="uid://cyy1ajw0p26ai" path="res://scripts/gem/gem.gd" id="1_8dkk7"]
+[ext_resource type="Texture2D" uid="uid://dpp8yygbqvr11" path="res://assets/IMG_20250628_144235.jpg" id="2_q651i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tv10m"]
+
+[node name="Gem" type="Area2D"]
+position = Vector2(0, 26)
+script = ExtResource("1_8dkk7")
+
+[node name="gem" type="Sprite2D" parent="."]
+scale = Vector2(0.0258588, 0.0258589)
+texture = ExtResource("2_q651i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(-2.51714, 3.5796)
+shape = SubResource("RectangleShape2D_tv10m")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
